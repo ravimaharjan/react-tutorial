@@ -16,27 +16,26 @@
                 name: 'Ravi',
                 age: 30
             }
-            // Changing the normal functions into the arrow functions so "this" is 
-            // bound correctly.
-            handleClick = (e) =>{
+            handleChange = (e) => {
                 this.setState({
-                    name: 'ivaR'
+                    name: e.target.value
                 })
             }
-            handleMouseOver = (e) => {
-                console.log(e);
-            }
-            handleCopy = (e) => {
-                console.log("Try to be original once !!")
+            handleSubmit = (e) => {
+                // prevent default refresh behaviour.
+                // This will prevent the form from being submitted on clicking submit.
+                e.preventDefault();
+                console.log('form submitted', this.state.name)
+
             }
             render() {
                 return (
                     <div className="app-content">
-                        <h1>Hey, ninjas</h1>
-                        <p> My name is : { this.state.name } and I am { this.state.age } </p>
-                        <button onClick={ this.handleClick }> Click Me </button>
-                        <button onMouseOver={ this.handleMouseOver }> Hover Me </button>
-                        <p onCopy={ this.handleCopy }> What we think is what we become</p>
+                        <p> My name is : { this.state.name } </p>
+                        <form onSubmit={ this.handleSubmit}> 
+                        <input type="text" onChange={ this.handleChange} />
+                        <button> Submit</button>
+                        </form>
                     </div>
                 )
             }
