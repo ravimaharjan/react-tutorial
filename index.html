@@ -16,14 +16,17 @@
                 name: 'Ravi',
                 age: 30
             }
-
-            handleClick(e) {
-                console.log(e.target);
+            // Changing the normal functions into the arrow functions so "this" is 
+            // bound correctly.
+            handleClick = (e) =>{
+                this.setState({
+                    name: 'ivaR'
+                })
             }
-            handleMouseOver(e) {
+            handleMouseOver = (e) => {
                 console.log(e);
             }
-            handleCopy(e) {
+            handleCopy = (e) => {
                 console.log("Try to be original once !!")
             }
             render() {
