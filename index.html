@@ -12,11 +12,31 @@
     <div id="app"></div>
     <script type="text/babel">
         class App extends React.Component {
+            state = {
+                name: 'Ravi',
+                age: 30
+            }
+            // Changing the normal functions into the arrow functions so "this" is 
+            // bound correctly.
+            handleClick = (e) =>{
+                this.setState({
+                    name: 'ivaR'
+                })
+            }
+            handleMouseOver = (e) => {
+                console.log(e);
+            }
+            handleCopy = (e) => {
+                console.log("Try to be original once !!")
+            }
             render() {
                 return (
                     <div className="app-content">
                         <h1>Hey, ninjas</h1>
-                        <p> { Math.random() * 10 } </p>
+                        <p> My name is : { this.state.name } and I am { this.state.age } </p>
+                        <button onClick={ this.handleClick }> Click Me </button>
+                        <button onMouseOver={ this.handleMouseOver }> Hover Me </button>
+                        <p onCopy={ this.handleCopy }> What we think is what we become</p>
                     </div>
                 )
             }
