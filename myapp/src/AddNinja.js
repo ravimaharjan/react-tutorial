@@ -14,7 +14,8 @@ class AddNinja extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
+        let addNinjaFunc = this.props.addNinjaFunc;
+        addNinjaFunc(this.state)
     }
     render(){
         return (
