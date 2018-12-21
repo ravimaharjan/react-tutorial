@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Ninjas from './Ninjas';
+import AddNinja from './AddNinja';
+
 class App extends Component {
   state = {
     ninjas: [
@@ -8,13 +10,20 @@ class App extends Component {
       { name: 'Kirshna', age: 33, belt: 'black', id: 3}
     ]
   }
+  addNewNinja = (newNinja) => {
+    newNinja.id = Math.random();
+    let newNinjaList = [... this.state.ninjas, newNinja];
+    this.setState({
+      ninjas: newNinjaList
+    })
+  }
   render() {
     return (
       <div className="App">
       <h1>My first React App!</h1>
       <p>Welcome.</p>
       <Ninjas ninjas={ this.state.ninjas }/>
-      
+      <AddNinja addNinjaFunc= { this.addNewNinja }/>
       </div>
     );
   }
